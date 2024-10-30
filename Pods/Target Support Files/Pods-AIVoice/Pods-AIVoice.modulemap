@@ -1,0 +1,6 @@
+framework module Pods_AIVoice {
+  umbrella header "Pods-AIVoice-umbrella.h"
+
+  export *
+  module * { export * }
+}
