@@ -6,17 +6,29 @@
 //
 
 import UIKit
+import SnapKit
 
 extension UIView {
-    static func dynamicHeight(for baseHeight: CGFloat) -> CGFloat {
-        let screenHeight = UIScreen.main.bounds.height
+    
+    func dynamicHeight(for baseHeight: CGFloat) -> CGFloat {
         let scaleFactor: CGFloat = baseHeight / 932
-        return screenHeight * scaleFactor
+        return UIScreen.main.bounds.height * scaleFactor
     }
     
-    static func dynamicWidth(for baseWidth: CGFloat) -> CGFloat {
-        let screenWidth = UIScreen.main.bounds.width
+    func dynamicWidth(for baseWidth: CGFloat) -> CGFloat {
         let scaleFactor: CGFloat = baseWidth / 430
-        return screenWidth * scaleFactor
+        return UIScreen.main.bounds.width * scaleFactor
+    }
+    
+    func setDynamicHeight(for baseHeight: CGFloat) {
+        self.snp.makeConstraints { make in
+            make.height.equalTo(dynamicHeight(for: baseHeight))
+        }
+    }
+    
+    func setDynamicWidth(for baseWidth: CGFloat) {
+        self.snp.makeConstraints { make in
+            make.width.equalTo(dynamicWidth(for: baseWidth))
+        }
     }
 }

@@ -17,5 +17,5 @@ extension UIColor {
     static let systemWhite2 = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.7)
     static let systemWhite3 = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.5)
     static let systemGray = UIColor(red: 131/255, green: 130/255, blue: 131/255, alpha: 1.0)
+    static let unknownColor = UIColor(red: 74/255, green: 33/255, blue: 59/255, alpha: 1.0)
 }
-

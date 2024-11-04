@@ -15,8 +15,7 @@ final class MainCoordinator: Coordinator {
     }
 
     func start() {
-        let mainViewController = ViewController()
+        let mainViewController = LandingVC()
         navigationController.pushViewController(mainViewController, animated: true)
     }
 }
-

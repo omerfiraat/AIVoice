@@ -10,5 +10,5 @@ target 'AIVoice' do
   pod 'SnapKit', '~> 5.0'
   pod 'Kingfisher', '~> 7.0'
   pod 'SwiftLint', '~> 0.47'
-
+  
 end
