@@ -8,8 +8,10 @@
 final class LandingVM {
     
     var characters: VoiceResponse?
-    var filteredCharacters: [Character] = [] // Property to store filtered voices
-    var categories: [String] = []  // Array to store unique categories
+    var filteredCharacters: [Character] = []
+    var categories: [String] = []
+    var selectedCharacter: Character?
+
 
     func fetchVoiceAPI(_ completion: @escaping () -> Void) {
         NetworkManager.shared.request(endpoint: .voiceAPI, type: VoiceResponse.self) { [weak self] result in

@@ -14,11 +14,9 @@ final class AnimationVC: BaseVC {
     // MARK: - Properties
 
     var generateRequest: GenerateRequest?
-    private lazy var viewModel = AnimationVM()
-    
-    var audioURL: URL?
-    
+    lazy var viewModel = AnimationVM()
     private let animationView = AnimationView()
+    var audioURL: URL?
     
     // MARK: - UI Components
 
@@ -44,6 +42,7 @@ final class AnimationVC: BaseVC {
     // MARK: - Lifecycle Methods
 
     override func viewDidLoad() {
+        leftButtonType = .cancel
         super.viewDidLoad()
         setupView()
         startAnimationAndFetchAudio()
@@ -97,7 +96,7 @@ final class AnimationVC: BaseVC {
         animationView.startAnimating()
         
         /// For simulate like a generation.
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
             self?.fetchGeneratedAudio()
         }
     }
@@ -110,7 +109,9 @@ final class AnimationVC: BaseVC {
             case .success(let response):
                 self?.handleSuccess(response)
             case .failure(let error):
-                print("Error: \(error)")
+                self?.showAlert(title: "Generate Failed", message: "\(error.localizedDescription)", buttonTitle: "OK") {
+                    self?.navigationController?.popToRootViewController(animated: true)
+                }
             }
         }
     }
@@ -124,7 +125,9 @@ final class AnimationVC: BaseVC {
         
         self.audioURL = audioURL
         let nextVC = ResultVC()
-        nextVC.audioURL = audioURL
+        nextVC.viewModel.audioURL = audioURL
+        nextVC.character = viewModel.selectedCharacter
+        nextVC.generateRequest = generateRequest
         navigationController?.pushViewController(nextVC, animated: true)
         animationView.stopAnimating()
     }

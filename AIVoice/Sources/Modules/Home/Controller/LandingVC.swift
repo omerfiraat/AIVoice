@@ -16,7 +16,6 @@ final class LandingVC: BaseVC {
     private lazy var pickVoiceLabel = UILabel()
     private lazy var categoryView = CategoryView()
     private lazy var viewModel = LandingVM()
-    private var selectedCharacterName: String?
     private var selectedIndexPath: IndexPath?
 
     private lazy var collectionView: UICollectionView = {
@@ -47,7 +46,7 @@ final class LandingVC: BaseVC {
     private lazy var bottomGradientView: UIView = {
         let view = UIView()
         let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [UIColor.black.withAlphaComponent(0).cgColor, UIColor.black.cgColor]
+        gradientLayer.colors = [UIColor.systemBlack.withAlphaComponent(0).cgColor, UIColor.systemBlack.cgColor]
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
         gradientLayer.locations = [0, 1]
@@ -66,9 +65,9 @@ final class LandingVC: BaseVC {
         setupPickVoiceLabel()
         setupCategoryView()
         setupCollectionView()
+        fetchVoicesAndCategories()
         setupBottomGradientView()
         setupContinueButton()
-        fetchVoicesAndCategories()
     }
 
     // MARK: - Data Fetching
@@ -97,7 +96,7 @@ final class LandingVC: BaseVC {
     // MARK: - Button Actions
     
     @objc private func continueButtonTapped() {
-        guard let cover = selectedCharacterName, let prompt = promptTextView.getText() else { return }
+        guard let cover = viewModel.selectedCharacter?.name, let prompt = promptTextView.getText() else { return }
         
         if prompt.isEmpty {
             showPromptError()
@@ -109,6 +108,7 @@ final class LandingVC: BaseVC {
     private func navigateToAnimationVC(with prompt: String, cover: String) {
         let viewController = AnimationVC()
         viewController.generateRequest = GenerateRequest(prompt: prompt, cover: cover)
+        viewController.viewModel.selectedCharacter = viewModel.selectedCharacter
         navigationController?.pushViewController(viewController, animated: true)
     }
     
@@ -121,7 +121,6 @@ final class LandingVC: BaseVC {
     // MARK: - UI Setup
     
     private func setupView() {
-        view.backgroundColor = .systemBlack
         view.addSubview(promptTextView)
         
         promptTextView.snp.makeConstraints { make in
@@ -134,7 +133,7 @@ final class LandingVC: BaseVC {
     private func setupNavigationBarTitle() {
         let titleLabel = UILabel()
         titleLabel.text = "AI Voice"
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        titleLabel.font = UIFont.boldFont(ofSize: 17)
         titleLabel.textColor = .white
         titleLabel.sizeToFit()
         navigationItem.titleView = titleLabel
@@ -144,7 +143,7 @@ final class LandingVC: BaseVC {
     private func setupPickVoiceLabel() {
         pickVoiceLabel.text = "Pick a Voice"
         pickVoiceLabel.textColor = .systemWhite
-        pickVoiceLabel.font = .boldSystemFont(ofSize: 26)
+        pickVoiceLabel.font = .boldFont(ofSize: 26)
         view.addSubview(pickVoiceLabel)
         pickVoiceLabel.snp.makeConstraints { make in
             make.top.equalTo(promptTextView.snp.bottom).offset(12)
@@ -249,12 +248,13 @@ extension LandingVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if selectedIndexPath == indexPath {
             deselectItem(at: indexPath)
-            self.selectedCharacterName = nil
+            viewModel.selectedCharacter = nil
         } else {
             selectItem(at: indexPath)
-            self.selectedCharacterName = viewModel.filteredCharacters[indexPath.row].name
+            viewModel.selectedCharacter = viewModel.filteredCharacters[indexPath.row]
         }
     }
+
     
     private func selectItem(at indexPath: IndexPath) {
         if let previousIndexPath = selectedIndexPath,

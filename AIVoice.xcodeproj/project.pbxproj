@@ -24,6 +24,11 @@
 		044506DD2CD3608000DEF056 /* Inspirations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044506DC2CD3608000DEF056 /* Inspirations.swift */; };
 		044506E32CD368AD00DEF056 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044506E22CD368AD00DEF056 /* UIButton+Extensions.swift */; };
 		0463BF8C2CD95E0300C1370C /* CollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463BF8B2CD95E0300C1370C /* CollectionViewExtensions.swift */; };
+		0463BF8F2CDA1BA700C1370C /* DropdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463BF8E2CDA1BA700C1370C /* DropdownView.swift */; };
+		0463BF912CDA211500C1370C /* AudioControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463BF902CDA211500C1370C /* AudioControlView.swift */; };
+		0463BF932CDA6E9A00C1370C /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463BF922CDA6E9A00C1370C /* UIViewController+Extensions.swift */; };
+		0463BF972CDA7C4D00C1370C /* ResultVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463BF962CDA7C4D00C1370C /* ResultVM.swift */; };
+		0463BF9D2CDA8C1500C1370C /* UIDevice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463BF9C2CDA8C1500C1370C /* UIDevice+Extensions.swift */; };
 		046DDCE02CD4F52A0010EC3C /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046DDCDF2CD4F52A0010EC3C /* CategoryView.swift */; };
 		046DDCE22CD4F8300010EC3C /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046DDCE12CD4F8300010EC3C /* APIEndpoint.swift */; };
 		046DDCE82CD4F9970010EC3C /* LandingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046DDCE72CD4F9970010EC3C /* LandingVM.swift */; };
@@ -60,6 +65,11 @@
 		044506DC2CD3608000DEF056 /* Inspirations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspirations.swift; sourceTree = "<group>"; };
 		044506E22CD368AD00DEF056 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		0463BF8B2CD95E0300C1370C /* CollectionViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewExtensions.swift; sourceTree = "<group>"; };
+		0463BF8E2CDA1BA700C1370C /* DropdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownView.swift; sourceTree = "<group>"; };
+		0463BF902CDA211500C1370C /* AudioControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioControlView.swift; sourceTree = "<group>"; };
+		0463BF922CDA6E9A00C1370C /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		0463BF962CDA7C4D00C1370C /* ResultVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultVM.swift; sourceTree = "<group>"; };
+		0463BF9C2CDA8C1500C1370C /* UIDevice+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extensions.swift"; sourceTree = "<group>"; };
 		046DDCDF2CD4F52A0010EC3C /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		046DDCE12CD4F8300010EC3C /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
 		046DDCE72CD4F9970010EC3C /* LandingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingVM.swift; sourceTree = "<group>"; };
@@ -97,7 +107,9 @@
 		0438517C2CD6442E005B1EBF /* Result */ = {
 			isa = PBXGroup;
 			children = (
-				0438517D2CD64459005B1EBF /* ResultVC.swift */,
+				0463BF992CDA83EA00C1370C /* Controller */,
+				0463BF982CDA83E500C1370C /* ViewModel */,
+				0463BF8D2CDA1B8800C1370C /* View */,
 			);
 			path = Result;
 			sourceTree = "<group>";
@@ -142,6 +154,8 @@
 				044506DA2CD35EA800DEF056 /* UIImage+Extensions.swift */,
 				044506E22CD368AD00DEF056 /* UIButton+Extensions.swift */,
 				0463BF8B2CD95E0300C1370C /* CollectionViewExtensions.swift */,
+				0463BF922CDA6E9A00C1370C /* UIViewController+Extensions.swift */,
+				0463BF9C2CDA8C1500C1370C /* UIDevice+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -236,6 +250,31 @@
 			isa = PBXGroup;
 			children = (
 				04EDD45D2CD2934E00D54992 /* LandingVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0463BF8D2CDA1B8800C1370C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0463BF8E2CDA1BA700C1370C /* DropdownView.swift */,
+				0463BF902CDA211500C1370C /* AudioControlView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0463BF982CDA83E500C1370C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0463BF962CDA7C4D00C1370C /* ResultVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0463BF992CDA83EA00C1370C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0438517D2CD64459005B1EBF /* ResultVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -469,11 +508,15 @@
 				044506DD2CD3608000DEF056 /* Inspirations.swift in Sources */,
 				043B38D42CD29A3C003B8905 /* AppCoordinator.swift in Sources */,
 				046DDCFB2CD5797F0010EC3C /* GenerateResponse.swift in Sources */,
+				0463BF932CDA6E9A00C1370C /* UIViewController+Extensions.swift in Sources */,
 				0463BF8C2CD95E0300C1370C /* CollectionViewExtensions.swift in Sources */,
 				043851802CD649EA005B1EBF /* BaseVC.swift in Sources */,
 				043B38F32CD2A39D003B8905 /* FontExtensions.swift in Sources */,
+				0463BF8F2CDA1BA700C1370C /* DropdownView.swift in Sources */,
+				0463BF9D2CDA8C1500C1370C /* UIDevice+Extensions.swift in Sources */,
 				04EDD45E2CD2934E00D54992 /* LandingVC.swift in Sources */,
 				046DDCEE2CD5664F0010EC3C /* GradientButton.swift in Sources */,
+				0463BF972CDA7C4D00C1370C /* ResultVM.swift in Sources */,
 				04EDD45A2CD2934E00D54992 /* AppDelegate.swift in Sources */,
 				043B38DF2CD29BA8003B8905 /* NetworkManager.swift in Sources */,
 				046DDCE22CD4F8300010EC3C /* APIEndpoint.swift in Sources */,
@@ -481,6 +524,7 @@
 				046DDCEA2CD4F9E30010EC3C /* VoiceResponse.swift in Sources */,
 				044506D52CD3511A00DEF056 /* PromptTextView.swift in Sources */,
 				046DDCF72CD574FE0010EC3C /* GenerateRequest.swift in Sources */,
+				0463BF912CDA211500C1370C /* AudioControlView.swift in Sources */,
 				046DDCF92CD578EB0010EC3C /* AnimationVM.swift in Sources */,
 				04EDD45C2CD2934E00D54992 /* SceneDelegate.swift in Sources */,
 				0438517B2CD63740005B1EBF /* AnimationView.swift in Sources */,

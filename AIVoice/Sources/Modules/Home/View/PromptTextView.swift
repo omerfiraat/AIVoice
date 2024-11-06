@@ -210,4 +210,20 @@ final class PromptTextView: UIView, UITextViewDelegate {
     func getText() -> String? {
          return textView.text == placeholderText ? "" : textView.text
      }
+    
+    func setTextViewText(to text: String) {
+        textView.text = text
+        textView.textColor = .systemWhite
+        updateCancelButtonVisibility()
+    }
+    
+    func hideActionAndCancelComponents() {
+        actionButton.isHidden = true
+        actionImageView.isHidden = true
+        cancelButton.isHidden = true
+        cancelImage.isHidden = true
+        
+        self.isUserInteractionEnabled = false
+    }
+
 }

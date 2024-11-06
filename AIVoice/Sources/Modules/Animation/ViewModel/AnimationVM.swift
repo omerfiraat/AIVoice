@@ -7,6 +7,8 @@
 
 final class AnimationVM {
     
+    var selectedCharacter: Character?
+
     func generateApi(_ request: GenerateRequest, completion: @escaping (Result<GenerateResponse, Error>) -> Void) {
         NetworkManager.shared.request(endpoint: .generateAPI(request: request), type: GenerateResponse.self) { result in
             switch result {
